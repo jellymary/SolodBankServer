@@ -6,7 +6,6 @@ db.run('CREATE TABLE AnyBankForm(cardNumber nchar(16), cardDate nchar(5), cardCV
 
 function insertAnyBankFormTable({cardNumber, cardDate, cardCvc, sum, comment, email}) {
     insert('AnyBankForm', cardNumber, cardDate, cardCvc, sum, comment, email);
-    print();
 }
 
 function insert(tableName, ...args){
@@ -17,8 +16,30 @@ function insert(tableName, ...args){
         stm.run(args);
         stm.finalize();
     });
-
 }
+//
+// function selectAnyBankForm() {
+//     const result = [];
+//     db.serialize(function(){
+//         db.each('SELECT * FROM AnyBankForm', (err, row) => {
+//             if (err) {
+//                 console.error(err.message);
+//             }
+//             const obj = {
+//                 number: row.cardNumber,
+//                 date: row.cardDate,
+//                 cvc: row.cardCVC,
+//                 sum: row.sum,
+//                 comment: row.comment,
+//                 email: row.email
+//             };
+//             // console.log(obj);
+//             result.push(obj);
+//         });
+//         return result;
+//     });
+// }
+
 
 function print() {
     db.serialize(function(){
@@ -33,5 +54,6 @@ function print() {
 
 
 module.exports = {
-    insertAnyBankFormTable
+    insertAnyBankFormTable,
+    selectAnyBankForm
 };

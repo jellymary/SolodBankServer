@@ -37,6 +37,11 @@ app.get('/forms/own-bank', function(req, res){
     doc.end();
 });
 
+// app.get('/admin', function(req, res) {
+//     database.selectAnyBankForm();
+//     // console.log('aaa' + database.selectAnyBankForm());
+// });
+
 app.listen(8000, function () {
     console.log('Server listening on port 8000!');
 });
